@@ -5,8 +5,8 @@ import './App.css'
 
 function App() {
   return (
-    <div className="container">
-      <div className="center">
+    <div className="center">
+      <div className="container">
         <div className="left">
         </div>
         <div className="right">
