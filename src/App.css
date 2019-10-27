@@ -3,6 +3,10 @@
  padding: 0;
 }
 
+body {
+  font-family: 'Poppins', sans-serif;
+
+}
 
 .center {
   width: 960px;

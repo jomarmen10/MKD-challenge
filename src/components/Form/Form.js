@@ -6,7 +6,21 @@ class Form extends Component {
   state = {
     name: '',
     email: '',
-    message: ''
+    message: '',
+    inputFiledCheck: false
+  }
+
+  checkFields = () => {
+
+    if(!this.state.name || !this.state.email || !this.state.message){
+      console.log('please enter required field*')
+      return false
+    } else {
+      this.setState({
+        inputFiledCheck: true
+      })
+      return true
+    }
   }
 
   handleChange = e => {
@@ -15,9 +29,22 @@ class Form extends Component {
     })
   }
 
-  handleSubmit = e => {
-    e.preventDefault()
-    console.log(this.state)
+  handleSubmit = async(e) => {
+    try {
+      e.preventDefault()
+      await this.checkFields()
+      if(this.state.inputFiledCheck){
+        this.setState({
+          name: '',
+          email: '',
+          message: '',
+          inputFiledCheck: false
+        })
+        console.log(this.state)
+      }
+    } catch(err) {
+      return "please enter required field"
+    }
   }
 
   render(){
@@ -35,4 +62,4 @@ class Form extends Component {
   }
 }
 
-export default Form
+export default (Form)
