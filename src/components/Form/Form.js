@@ -83,10 +83,7 @@ class Form extends Component {
             validators={['required']}
             errorMessages={['this field is required', 'email is not valid']}
           ></TextValidator> <br/> <br/>
-
-
-
-          {/* <Button  color="primary" onClick={this.handleSubmit}>send</Button> */}
+          
           <Button
             color="primary"
             variant="outlined"
