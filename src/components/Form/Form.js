@@ -1,4 +1,6 @@
 import React, { Component } from 'react';
+import {TextField, Button} from '@material-ui/core';
+
 
 class Form extends Component {
   state = {
@@ -15,7 +17,7 @@ class Form extends Component {
 
   handleSubmit = e => {
     e.preventDefault()
-    console.log('submit working')
+    console.log(this.state)
   }
 
   render(){
@@ -23,10 +25,10 @@ class Form extends Component {
     return(
       <div>
         <form onSubmit={this.handleSubmit}>
-          <input name="name" value={name} onChange={this.handleChange}></input>
-          <input name="email" value={email} onChange={this.handleChange}></input>
-          <input name="message" value={message} onChange={this.handleChange}></input>
-          <button>send</button>
+          <TextField label="Name*" name="name" value={name} onChange={this.handleChange}></TextField> <br/>
+          <TextField label="Email*" name="email" value={email} onChange={this.handleChange}></TextField> <br/>
+          <TextField label="Message*" name="message" value={message} onChange={this.handleChange}></TextField> <br/> <br/>
+          <Button variant="outlined" color="primary" onClick={this.handleSubmit}>send</Button>
         </form>
       </div>
     )
