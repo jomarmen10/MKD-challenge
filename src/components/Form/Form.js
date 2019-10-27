@@ -1,18 +1,22 @@
 import React, { Component } from 'react';
-import {TextField, Button} from '@material-ui/core';
+import { Button } from '@material-ui/core';
+import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 
 class Form extends Component {
   state = {
-    name: '',
-    email: '',
-    message: '',
+    formData: {
+      name: '',
+      email: '',
+      message: ''
+    },
     inputFiledCheck: false
   }
 
   checkFields = () => {
+    const { formData } = this.state;
 
-    if(!this.state.name || !this.state.email || !this.state.message){
+    if(!formData.name || !formData.email || !formData.message){
       console.log('please enter required field*')
       return false
     } else {
@@ -24,9 +28,9 @@ class Form extends Component {
   }
 
   handleChange = e => {
-    this.setState({
-      [e.currentTarget.name]: e.currentTarget.value
-    })
+    const { formData } = this.state;
+    formData[e.currentTarget.name] = e.currentTarget.value
+    this.setState({ formData });
   }
 
   handleSubmit = async(e) => {
@@ -40,7 +44,7 @@ class Form extends Component {
           message: '',
           inputFiledCheck: false
         })
-        console.log(this.state)
+        console.log(this.state.formData)
       }
     } catch(err) {
       return "please enter required field"
@@ -48,15 +52,53 @@ class Form extends Component {
   }
 
   render(){
-    const { name, email, message } = this.state
+    const { inputFiledCheck } = this.state
+    const { name, email, message } = this.state.formData
     return(
       <div>
-        <form onSubmit={this.handleSubmit}>
-          <TextField label="Name*" name="name" value={name} onChange={this.handleChange}></TextField> <br/>
-          <TextField label="Email*" name="email" value={email} onChange={this.handleChange}></TextField> <br/>
-          <TextField label="Message*" name="message" value={message} onChange={this.handleChange}></TextField> <br/> <br/>
-          <Button variant="outlined" color="primary" onClick={this.handleSubmit}>send</Button>
-        </form>
+        <ValidatorForm onSubmit={this.handleSubmit}>
+          <TextValidator
+            label="Name*"
+            name="name"
+            value={name}
+            onChange={this.handleChange}
+            validators={['required']}
+            errorMessages={['this field is required']}
+          ></TextValidator> <br/>
+
+          <TextValidator
+            label="Email*"
+            name="email"
+            value={email}
+            onChange={this.handleChange}
+            validators={['required', 'isEmail']}
+            errorMessages={['this field is required', 'email is not valid']}
+          ></TextValidator> <br/>
+
+          <TextValidator
+            label="Message*"
+            name="message"
+            value={message}
+            onChange={this.handleChange}
+            validators={['required']}
+            errorMessages={['this field is required', 'email is not valid']}
+          ></TextValidator> <br/> <br/>
+
+
+
+          {/* <Button  color="primary" onClick={this.handleSubmit}>send</Button> */}
+          <Button
+            color="primary"
+            variant="outlined"
+            type="submit"
+            disabled={inputFiledCheck}
+          >
+            {
+              (inputFiledCheck && 'Your form is submitted!')
+              || (!inputFiledCheck && 'Submit')
+            }
+          </Button>
+        </ValidatorForm>
       </div>
     )
   }
