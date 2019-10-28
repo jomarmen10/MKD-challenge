@@ -44,7 +44,9 @@ class Form extends Component {
           message: '',
           inputFiledCheck: false
         })
-        console.log(this.state.formData)
+        // send to lamda
+        // console.log(this.state.formData)
+        console.log('lamda')
       }
     } catch(err) {
       return "please enter required field"
@@ -83,7 +85,7 @@ class Form extends Component {
             validators={['required']}
             errorMessages={['this field is required', 'email is not valid']}
           ></TextValidator> <br/> <br/>
-          
+
           <Button
             color="primary"
             variant="outlined"
