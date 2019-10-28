@@ -56,17 +56,6 @@ class Form extends Component {
     }
   }
 
-  //endpoint
-  // {"subject": "hello", "body": "world"}
-  // https://tjvlpbr51j.execute-api.us-west-2.amazonaws.com/productionv1
-  //
-  // curl --request POST \
-  //   --url https://tjvlpbr51j.execute-api.us-west-2.amazonaws.com/productionv1 \
-  //   --header 'content-type: application/json' \
-  //   --data '{
-  //  "subject": "Hello",
-  //  "body": "Hoge"
-  // }'
 
   render(){
     const { inputFiledCheck } = this.state
