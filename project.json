@@ -1,0 +1,9 @@
+{
+  "name": "serverless",
+  "description": "mkd test challenges",
+  "memory": 128,
+  "timeout": 5,
+  "environment": {},
+  "runtime": "nodejs10.x",
+  "role": "arn:aws:iam::523126266505:role/serverless_lambda_function"
+}

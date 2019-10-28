@@ -3,6 +3,8 @@ import { Button } from '@material-ui/core';
 import { ValidatorForm, TextValidator } from 'react-material-ui-form-validator';
 
 
+
+
 class Form extends Component {
   state = {
     formData: {
@@ -12,6 +14,7 @@ class Form extends Component {
     },
     inputFiledCheck: false
   }
+
 
   checkFields = () => {
     const { formData } = this.state;
@@ -104,3 +107,15 @@ class Form extends Component {
 }
 
 export default (Form)
+
+//
+// {"subject": "hello", "body": "world"}
+// https://tjvlpbr51j.execute-api.us-west-2.amazonaws.com/productionv1
+//
+// curl --request POST \
+//   --url https://tjvlpbr51j.execute-api.us-west-2.amazonaws.com/productionv1 \
+//   --header 'content-type: application/json' \
+//   --data '{
+//  "subject": "Hello",
+//  "body": "Hoge"
+// }'

@@ -1,0 +1,8 @@
+{
+  "environment": {
+    "SES_REGION": "us-west-2",
+    "FROM_NAME": "test",
+    "FROM_EMAIL": "mendoza.jomar910@gmail.com",
+    "TO_EMAIL": "mendoza.jomar910@gmail.com"
+  }
+}
